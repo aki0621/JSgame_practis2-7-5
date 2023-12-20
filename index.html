@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            td.cell{
+                border:2px solid black;
+                width: 200px;
+                height: 200px;
+                text-align:center;
+                font-size:150px;
+            }
+        </style>
+        <script>
+            let count = 0;
+            function init(){
+                let b = document.getElementById("board");
+                for (let i = 0;i < 3;i ++){
+                    let tr = document.createElement("tr");
+                    for (let j = 0;j < 3;j ++){
+                        let td = document.createElement("td");
+                        td.className = "cell";
+                        td.id = "cell"+ i + j;
+                        td.onclick = clicked;
+                        tr.appendChild(td);
+                    }
+                    b.appendChild(tr);
+                }
+            }
+
+            function clicked(e){
+               if(count++ % 2 == 0){
+                e.target.textContent = "〇";
+               }else{
+                e.target.textContent = "×";
+               }
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <table id="board"></table>
+    </body>
+</html>
